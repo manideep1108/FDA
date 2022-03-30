@@ -5,7 +5,7 @@ from data.cityscapes_dataset import cityscapesDataSet
 from data.cityscapes_dataset_label import cityscapesDataSetLabel
 from data.cityscapes_dataset_SSL import cityscapesDataSetSSL
 from data.synthia_dataset import SYNDataSet
-from data.Cityscapes_SRC_Dataset import CityscapesSRCDataSet
+from data.Cityscapes_SRC_Dataset import Cityscapes_SRC_Dataset
 from data.ACDC_TRG_Dataset import ACDC_TRG_Dataset
 
 IMG_MEAN = np.array((0.0, 0.0, 0.0), dtype=np.float32)
@@ -28,7 +28,7 @@ def CreateSrcDataLoader(args):
 
 def CreateTrgDataLoader(args):
 
-    target_dataset = Cityscapes_SRC_Dataset(args.img_dir_trg,
+    target_dataset = ACDC_TRG_Dataset(args.img_dir_trg,
                                             args.label_dir_trg,
                                             crop_size=(1024, 512),
                                             mean=IMG_MEAN,
