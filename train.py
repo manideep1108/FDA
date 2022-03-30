@@ -62,8 +62,8 @@ def main():
         model.adjust_learning_rate(args, optimizer, i)                               # adjust learning rate
         optimizer.zero_grad()                                                        # zero grad
 
-        src_img, src_lbl, _, _ = sourceloader_iter.next()                            # new batch source
-        trg_img, trg_lbl, _, _ = targetloader_iter.next()                            # new batch target
+        src_img, src_lbl, _ = sourceloader_iter.next()                            # new batch source
+        trg_img, _ = targetloader_iter.next()                            # new batch target
 
         scr_img_copy = src_img.clone()
 
@@ -90,8 +90,9 @@ def main():
         loss_ent_src = model.loss_ent
 
         # get target loss, only entropy for backpro
-        trg_img, trg_lbl = Variable(trg_img).cuda(), Variable(trg_lbl.long()).cuda() # to gpu
-        trg_seg_score = model(trg_img, lbl=trg_lbl, weight=class_weights, ita=args.ita)      # forward pass
+        # trg_img, trg_lbl = Variable(trg_img).cuda(), Variable(trg_lbl.long()).cuda() # to gpu
+        trg_img= Variable(trg_img).cuda()
+        trg_seg_score = model(trg_img, weight=class_weights, ita=args.ita)      # forward pass
         loss_seg_trg = model.loss_seg                                                # get loss
         loss_ent_trg = model.loss_ent
 
