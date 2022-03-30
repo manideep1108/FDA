@@ -19,7 +19,7 @@ class ACDC_TRG_Dataset(data.Dataset):
 
 
     def __len__(self):
-        return len(self.img_ids)
+        return len(self.X_path)
 
     def __getitem__(self, index):
         image = Image.open(self.X_path[index]).convert('RGB')
