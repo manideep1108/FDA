@@ -14,7 +14,11 @@ class TrainOptions():
         parser.add_argument("--source", type=str, default='gta5', help="source dataset : gta5 or synthia")
         parser.add_argument("--target", type=str, default='cityscapes', help="target dataset : cityscapes")
         parser.add_argument("--snapshot-dir", type=str, default='../checkpoints/FDA', help="Where to save snapshots of the model.")
-        parser.add_argument("--data-dir", type=str, default='../data_semseg/GTA5', help="Path to the directory containing the source dataset.")
+        parser.add_argument("--img_dir_src", type=str, default="/mnt/sdb/Datasets/Bosch/Datasets/Cityscapes/leftImg8bit_trainvaltest/leftImg8bit/")
+        parser.add_argument("--img_dir_trg", type=str, default="/mnt/sdb/Datasets/Bosch/Datasets/ACDC/rgb_anon_trainvaltest/rgb_anon/")
+        parser.add_argument("--label_dir_src", type=str, default="/mnt/sdb/Datasets/Bosch/Datasets/Cityscapes/gtFine_trainvaltest/gtFine/")
+        parser.add_argument("--label_dir_trg", type=str, default="/mnt/sdb/Datasets/Bosch/Datasets/ACDC/gt_trainval/gt/")
+
         parser.add_argument("--data-list", type=str, default='./dataset/gta5_list/train.txt', help="Path to the listing of images in the source dataset.")
         parser.add_argument("--data-dir-target", type=str, default='../data_semseg/cityscapes', help="Path to the directory containing the target dataset.")
         parser.add_argument("--data-list-target", type=str, default='./dataset/cityscapes_list/train.txt', help="list of images in the target dataset.")
