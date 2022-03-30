@@ -91,6 +91,7 @@ def main():
 
         # get target loss, only entropy for backpro
         # trg_img, trg_lbl = Variable(trg_img).cuda(), Variable(trg_lbl.long()).cuda() # to gpu
+        print(trg_img.shape)
         trg_img= Variable(trg_img).cuda()
         trg_seg_score = model(trg_img, weight=class_weights, ita=args.ita)      # forward pass
         loss_seg_trg = model.loss_seg                                                # get loss
