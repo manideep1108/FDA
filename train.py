@@ -63,8 +63,8 @@ def main():
         optimizer.zero_grad()                                                        # zero grad
         try:
           while True:
-            src_img, src_lbl, _ = sourceloader_iter.next()                            # new batch source
-            trg_img, _ = targetloader_iter.next()                            # new batch target
+            src_img, src_lbl, _ = sourceloader_iter.next().cuda()                            # new batch source
+            trg_img, _ = targetloader_iter.next().cuda()                            # new batch target
         except StopIteration:
           pass
         scr_img_copy = src_img.clone()
@@ -78,10 +78,13 @@ def main():
         # 1. source to target, target to target
         src_in_trg = FDA_source_to_target( src_img, trg_img, L=args.LB )            # src_lbl
         trg_in_trg = trg_img
+        src_in_trg = src_in_trg.cuda()
+        trg_in_trg = trg_in_trg.cuda()
 
         # 2. subtract mean
         src_img = src_in_trg.clone() - mean_img                                 # src, src_lbl
         trg_img = trg_in_trg.clone() - mean_img                                 # trg, trg_lbl
+        
 
         #-------------------------------------------------------------------#
 
