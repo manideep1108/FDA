@@ -61,10 +61,12 @@ def main():
     for i in range(start_iter, args.num_steps):
         model.adjust_learning_rate(args, optimizer, i)                               # adjust learning rate
         optimizer.zero_grad()                                                        # zero grad
-
-        src_img, src_lbl, _ = sourceloader_iter.next()                            # new batch source
-        trg_img, _ = targetloader_iter.next()                            # new batch target
-
+        try:
+          while True:
+            src_img, src_lbl, _ = sourceloader_iter.next()                            # new batch source
+            trg_img, _ = targetloader_iter.next()                            # new batch target
+        except StopIteration:
+          pass
         scr_img_copy = src_img.clone()
 
         if mean_img.shape[-1] < 2:
