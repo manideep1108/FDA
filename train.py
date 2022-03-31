@@ -63,8 +63,8 @@ def main():
         optimizer.zero_grad()                                                        # zero grad
         try:
           while True:
-            src_img, src_lbl, _ = sourceloader_iter.next().cuda()                            # new batch source
-            trg_img, _ = targetloader_iter.next().cuda()                            # new batch target
+            src_img, src_lbl, _ = sourceloader_iter.next()                            # new batch source
+            trg_img, _ = targetloader_iter.next()                            # new batch target
         except StopIteration:
           pass
         scr_img_copy = src_img.clone()
