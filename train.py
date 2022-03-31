@@ -82,8 +82,8 @@ def main():
         trg_in_trg = trg_in_trg.cuda()
 
         # 2. subtract mean
-        src_img = src_in_trg.clone() - mean_img                                 # src, src_lbl
-        trg_img = trg_in_trg.clone() - mean_img                                 # trg, trg_lbl
+        src_img = src_in_trg.clone() - mean_img.cuda()                                 # src, src_lbl
+        trg_img = trg_in_trg.clone() - mean_img.cuda()                                 # trg, trg_lbl
         
 
         #-------------------------------------------------------------------#
