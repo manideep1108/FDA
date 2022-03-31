@@ -24,7 +24,14 @@ def CreateSrcDataLoader(args):
                                          shuffle=True,
                                          num_workers=args.num_workers,
                                          pin_memory=True )
-    return source_dataloader
+    try:
+        while True:
+            return source_dataloader
+        except StopIteration:
+            pass
+            
+        
+    
 
 def CreateTrgDataLoader(args):
 
@@ -38,7 +45,12 @@ def CreateTrgDataLoader(args):
                                         shuffle=True,
                                         num_workers=args.num_workers,
                                         pin_memory=True)
-    return target_dataloader
+    try:
+        while True:
+            return target_dataloader
+        except StopIteration:
+            pass
+
 
 
 
@@ -52,7 +64,11 @@ def CreateTrgDataSSLLoader(args):
                                          batch_size=1, 
                                          shuffle=False, 
                                          pin_memory=True )
-    return target_dataloader
+    try:
+        while True:
+            return target_dataloader
+        except StopIteration:
+            pass
 
 
 
@@ -71,5 +87,9 @@ def CreatePseudoTrgLoader(args):
                                          num_workers=args.num_workers,
                                          pin_memory=True )
 
-    return target_dataloader
+    try:
+        while True:
+            return target_dataloader
+        except StopIteration:
+            pass
 
