@@ -27,7 +27,7 @@ def CreateSrcDataLoader(args):
     try:
         while True:
             return source_dataloader
-        except StopIteration:
+    except StopIteration:
             pass
             
         
@@ -48,7 +48,7 @@ def CreateTrgDataLoader(args):
     try:
         while True:
             return target_dataloader
-        except StopIteration:
+    except StopIteration:
             pass
 
 
@@ -67,7 +67,7 @@ def CreateTrgDataSSLLoader(args):
     try:
         while True:
             return target_dataloader
-        except StopIteration:
+    except StopIteration:
             pass
 
 
@@ -90,6 +90,6 @@ def CreatePseudoTrgLoader(args):
     try:
         while True:
             return target_dataloader
-        except StopIteration:
+    except StopIteration:
             pass
 
